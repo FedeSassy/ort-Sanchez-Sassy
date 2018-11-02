@@ -151,6 +151,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomExceptionClasses\ClientNotFoundException.cs" />
+    <Compile Include="Models\CustomExceptionClasses\CustomException.cs" />
+    <Compile Include="Models\CustomExceptionClasses\OrdenTrabajoNotFoundException.cs" />
+    <Compile Include="Models\Entities\Cliente.cs" />
+    <Compile Include="Models\Entities\Direccion.cs" />
+    <Compile Include="Models\Entities\Estado.cs" />
+    <Compile Include="Models\Entities\OrdenTrabajo.cs" />
+    <Compile Include="Models\Entities\Repuesto.cs" />
+    <Compile Include="Models\Entities\TallerMecanico.cs" />
+    <Compile Include="Models\Utils\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,7 +205,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
