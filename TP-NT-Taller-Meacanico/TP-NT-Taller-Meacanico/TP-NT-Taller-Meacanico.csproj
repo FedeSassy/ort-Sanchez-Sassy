@@ -45,10 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -151,15 +157,48 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Autopart.cs">
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomExceptionClasses\ClientNotFoundException.cs" />
     <Compile Include="Models\CustomExceptionClasses\CustomException.cs" />
     <Compile Include="Models\CustomExceptionClasses\OrdenTrabajoNotFoundException.cs" />
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Cliente.cs" />
     <Compile Include="Models\Entities\Direccion.cs" />
     <Compile Include="Models\Entities\Estado.cs" />
     <Compile Include="Models\Entities\OrdenTrabajo.cs" />
     <Compile Include="Models\Entities\Repuesto.cs" />
     <Compile Include="Models\Entities\TallerMecanico.cs" />
+    <Compile Include="Models\Mechanical_Workshop.cs">
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mode_workshop.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mode_workshop.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mode_workshop.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mode_workshop.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mode_workshop.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Utils\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -172,10 +211,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Mode_workshop.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mode_workshop.edmx</DependentUpon>
+      <LastGenOutput>Mode_workshop.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Mode_workshop.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Mode_workshop.edmx</DependentUpon>
+      <LastGenOutput>Mode_workshop.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\Mode_workshop.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Mode_workshop.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Mode_workshop.edmx.diagram">
+      <DependentUpon>Mode_workshop.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -218,6 +274,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

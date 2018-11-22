@@ -15,8 +15,15 @@ namespace TP_NT_Taller_Meacanico.Controllers
 
         public ActionResult About()
         {
+            /**
+             * TODO el precio por hora invertida es de $300 para cualquier repuesto
+             * El calculo final es [(cantidadHoras * precio) + (precioRep * cantRep)]
+             */
             ViewBag.Message = "Your application description page.";
 
+            var db = new Models.ProyectoORTEntities1();
+            db.SaveChanges();
+           
             return View();
         }
 

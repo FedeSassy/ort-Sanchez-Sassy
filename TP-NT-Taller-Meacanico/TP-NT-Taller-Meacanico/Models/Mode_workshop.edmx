@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoORTModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProyectoORT.dbo.Address' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="number" />
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="department" Type="varchar" MaxLength="50" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Autopart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="personal_id" Type="int" Nullable="false" />
+          <Property Name="telephone" Type="int" />
+          <Property Name="address_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="personal_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProyectoORT.dbo.Mechanical_Workshop' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Mechanical_Workshop">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date_created" Type="date" Nullable="false" />
+          <Property Name="date_ended" Type="date" />
+          <Property Name="autopart_id" Type="int" />
+          <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_id" Type="int" Nullable="false" />
+          <Property Name="employee_id" Type="int" Nullable="false" />
+          <Property Name="brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="plate_number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ProyectoORT.dbo.Order_Autopart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Order_Autopart">
+          <Key>
+            <PropertyRef Name="order_id" />
+            <PropertyRef Name="autopart_id" />
+            <PropertyRef Name="hours" />
+            <PropertyRef Name="quantity" />
+          </Key>
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="autopart_id" Type="int" Nullable="false" />
+          <Property Name="hours" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Address_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Autopart_Autopart">
+          <End Role="Autopart" Type="Self.Autopart" Multiplicity="1" />
+          <End Role="Order_Autopart" Type="Self.Order_Autopart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autopart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Autopart">
+              <PropertyRef Name="autopart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Autopart_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Order_Autopart" Type="Self.Order_Autopart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Autopart">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoORTModel1StoreContainer">
+          <EntitySet Name="Autopart" EntityType="Self.Autopart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Address].[name] AS [name], 
+[Address].[number] AS [number], 
+[Address].[department] AS [department], 
+[Address].[client_id] AS [client_id]
+FROM [dbo].[Address] AS [Address]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Mechanical_Workshop" EntityType="Self.Mechanical_Workshop" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Mechanical_Workshop].[name] AS [name]
+FROM [dbo].[Mechanical_Workshop] AS [Mechanical_Workshop]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Order_Autopart" EntityType="Self.Order_Autopart" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Order_Autopart].[order_id] AS [order_id], 
+[Order_Autopart].[autopart_id] AS [autopart_id], 
+[Order_Autopart].[hours] AS [hours], 
+[Order_Autopart].[quantity] AS [quantity]
+FROM [dbo].[Order_Autopart] AS [Order_Autopart]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Address_Client" Association="Self.FK_Address_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Autopart_Autopart" Association="Self.FK_Order_Autopart_Autopart">
+            <End Role="Autopart" EntitySet="Autopart" />
+            <End Role="Order_Autopart" EntitySet="Order_Autopart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Autopart_Order" Association="Self.FK_Order_Autopart_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Order_Autopart" EntitySet="Order_Autopart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoORTModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Autopart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Order_Autopart" Relationship="ProyectoORTModel1.FK_Order_Autopart_Autopart" FromRole="Autopart" ToRole="Order_Autopart" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personal_id" Type="Int32" Nullable="false" />
+          <Property Name="telephone" Type="Int32" />
+          <Property Name="address_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="ProyectoORTModel1.FK_Address_Client" FromRole="Client" ToRole="Address" />
+          <NavigationProperty Name="Orders" Relationship="ProyectoORTModel1.FK_Order_Client" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="personal_id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="ProyectoORTModel1.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="date_ended" Type="DateTime" Precision="0" />
+          <Property Name="autopart_id" Type="Int32" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="plate_number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Employee" Relationship="ProyectoORTModel1.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="Client" Relationship="ProyectoORTModel1.FK_Order_Client" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Order_Autopart" Relationship="ProyectoORTModel1.FK_Order_Autopart_Order" FromRole="Order" ToRole="Order_Autopart" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="name" />
+            <PropertyRef Name="number" />
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="number" Type="Int32" Nullable="false" />
+          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="ProyectoORTModel1.FK_Address_Client" FromRole="Address" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Mechanical_Workshop">
+          <Key>
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ProyectoORTEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Autoparts" EntityType="Self.Autopart" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Mechanical_Workshop" EntityType="Self.Mechanical_Workshop" />
+          <AssociationSet Name="FK_Order_Employee" Association="ProyectoORTModel1.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Address_Client" Association="ProyectoORTModel1.FK_Address_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="ProyectoORTModel1.FK_Order_Client">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <EntitySet Name="Order_Autopart" EntityType="ProyectoORTModel1.Order_Autopart" />
+          <AssociationSet Name="FK_Order_Autopart_Autopart" Association="ProyectoORTModel1.FK_Order_Autopart_Autopart">
+            <End Role="Autopart" EntitySet="Autoparts" />
+            <End Role="Order_Autopart" EntitySet="Order_Autopart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Autopart_Order" Association="ProyectoORTModel1.FK_Order_Autopart_Order">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Order_Autopart" EntitySet="Order_Autopart" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Order_Employee">
+          <End Type="ProyectoORTModel1.Employee" Role="Employee" Multiplicity="1" />
+          <End Type="ProyectoORTModel1.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="employee_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Address_Client">
+          <End Type="ProyectoORTModel1.Client" Role="Client" Multiplicity="1" />
+          <End Type="ProyectoORTModel1.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Type="ProyectoORTModel1.Client" Role="Client" Multiplicity="1" />
+          <End Type="ProyectoORTModel1.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Order_Autopart">
+          <Key>
+            <PropertyRef Name="order_id" />
+            <PropertyRef Name="autopart_id" />
+            <PropertyRef Name="hours" />
+            <PropertyRef Name="quantity" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="autopart_id" Type="Int32" Nullable="false" />
+          <Property Name="hours" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Autopart" Relationship="ProyectoORTModel1.FK_Order_Autopart_Autopart" FromRole="Order_Autopart" ToRole="Autopart" />
+          <NavigationProperty Name="Order" Relationship="ProyectoORTModel1.FK_Order_Autopart_Order" FromRole="Order_Autopart" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Order_Autopart_Autopart">
+          <End Type="ProyectoORTModel1.Autopart" Role="Autopart" Multiplicity="1" />
+          <End Type="ProyectoORTModel1.Order_Autopart" Role="Order_Autopart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Autopart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Autopart">
+              <PropertyRef Name="autopart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Autopart_Order">
+          <End Type="ProyectoORTModel1.Order" Role="Order" Multiplicity="1" />
+          <End Type="ProyectoORTModel1.Order_Autopart" Role="Order_Autopart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Order_Autopart">
+              <PropertyRef Name="order_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoORTModel1StoreContainer" CdmEntityContainer="ProyectoORTEntities1">
+          <EntitySetMapping Name="Autoparts">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Autopart">
+              <MappingFragment StoreEntitySet="Autopart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="personal_id" ColumnName="personal_id" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="personal_id" ColumnName="personal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="date_ended" ColumnName="date_ended" />
+                <ScalarProperty Name="autopart_id" ColumnName="autopart_id" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="brand" ColumnName="brand" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="plate_number" ColumnName="plate_number" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="total" ColumnName="total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="number" ColumnName="number" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mechanical_Workshop">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Mechanical_Workshop">
+              <MappingFragment StoreEntitySet="Mechanical_Workshop">
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_Autopart">
+            <EntityTypeMapping TypeName="ProyectoORTModel1.Order_Autopart">
+              <MappingFragment StoreEntitySet="Order_Autopart">
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="hours" ColumnName="hours" />
+                <ScalarProperty Name="autopart_id" ColumnName="autopart_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
