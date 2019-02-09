@@ -31,9 +31,11 @@ namespace TP_NT_Taller_Meacanico.Models
         public string plate_number { get; set; }
         public string description { get; set; }
         public Nullable<decimal> total { get; set; }
+        public int workshop_id { get; set; }
     
-        public virtual Employee Employee { get; set; }
         public virtual Client Client { get; set; }
+        public virtual Employee Employee { get; set; }
+        public virtual Mechanical_Workshop Mechanical_Workshop { get; set; }
         public virtual ICollection<Order_Autopart> Order_Autopart { get; set; }
     }
 }

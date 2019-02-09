@@ -157,30 +157,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Address.cs">
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Autopart.cs">
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Client.cs">
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\CustomExceptionClasses\ClientNotFoundException.cs" />
     <Compile Include="Models\CustomExceptionClasses\CustomException.cs" />
     <Compile Include="Models\CustomExceptionClasses\OrdenTrabajoNotFoundException.cs" />
-    <Compile Include="Models\Employee.cs">
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Entities\Cliente.cs" />
-    <Compile Include="Models\Entities\Direccion.cs" />
-    <Compile Include="Models\Entities\Estado.cs" />
-    <Compile Include="Models\Entities\OrdenTrabajo.cs" />
-    <Compile Include="Models\Entities\Repuesto.cs" />
-    <Compile Include="Models\Entities\TallerMecanico.cs" />
-    <Compile Include="Models\Mechanical_Workshop.cs">
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Mode_workshop.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,9 +174,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Mode_workshop.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Order.cs">
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utils\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

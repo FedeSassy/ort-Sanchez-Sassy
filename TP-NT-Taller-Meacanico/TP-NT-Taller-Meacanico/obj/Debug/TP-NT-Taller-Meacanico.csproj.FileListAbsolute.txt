@@ -194,3 +194,5 @@ C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-T
 C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\obj\Debug\TP-NT-Taller-Meacanico.csproj.CopyComplete
 C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\obj\Debug\TP-NT-Taller-Meacanico.dll
 C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\obj\Debug\TP-NT-Taller-Meacanico.pdb
+C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\bin\EntityFramework.dll
+C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\bin\EntityFramework.xml

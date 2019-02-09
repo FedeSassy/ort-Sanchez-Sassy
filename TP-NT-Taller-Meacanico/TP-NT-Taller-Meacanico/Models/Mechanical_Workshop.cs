@@ -14,6 +14,18 @@ namespace TP_NT_Taller_Meacanico.Models
     
     public partial class Mechanical_Workshop
     {
+        public Mechanical_Workshop()
+        {
+            this.Clients = new HashSet<Client>();
+            this.Employees = new HashSet<Employee>();
+            this.Orders = new HashSet<Order>();
+        }
+    
         public string name { get; set; }
+        public int id { get; set; }
+    
+        public virtual ICollection<Client> Clients { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

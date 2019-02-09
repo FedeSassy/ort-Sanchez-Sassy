@@ -25,8 +25,10 @@ namespace TP_NT_Taller_Meacanico.Models
         public int personal_id { get; set; }
         public Nullable<int> telephone { get; set; }
         public int address_id { get; set; }
+        public int workshop_id { get; set; }
     
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual Mechanical_Workshop Mechanical_Workshop { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

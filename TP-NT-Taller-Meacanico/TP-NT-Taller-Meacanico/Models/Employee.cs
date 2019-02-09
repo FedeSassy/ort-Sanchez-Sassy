@@ -22,8 +22,9 @@ namespace TP_NT_Taller_Meacanico.Models
         public int id { get; set; }
         public string name { get; set; }
         public int personal_id { get; set; }
-        public int order_id { get; set; }
+        public int workshop_id { get; set; }
     
+        public virtual Mechanical_Workshop Mechanical_Workshop { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }
