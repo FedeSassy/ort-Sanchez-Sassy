@@ -157,25 +157,49 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Autopart.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CustomExceptionClasses\ClientNotFoundException.cs" />
     <Compile Include="Models\CustomExceptionClasses\CustomException.cs" />
     <Compile Include="Models\CustomExceptionClasses\OrdenTrabajoNotFoundException.cs" />
-    <Compile Include="Models\Mode_workshop.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Mode_workshop.Context.tt</DependentUpon>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Mode_workshop.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Mode_workshop.tt</DependentUpon>
+    <Compile Include="Models\Mechanical_Workshop.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Mode_workshop.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Mode_workshop.edmx</DependentUpon>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Autopart.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utils\Util.cs" />
+    <Compile Include="Models\WorkshopEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkshopEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkshopEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkshopEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkshopEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorkshopEntities.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -187,27 +211,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Mode_workshop.Context.tt">
+    <Content Include="Models\WorkshopEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Mode_workshop.edmx</DependentUpon>
-      <LastGenOutput>Mode_workshop.Context.cs</LastGenOutput>
+      <DependentUpon>WorkshopEntities.edmx</DependentUpon>
+      <LastGenOutput>WorkshopEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Mode_workshop.tt">
+    <Content Include="Models\WorkshopEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Mode_workshop.edmx</DependentUpon>
-      <LastGenOutput>Mode_workshop.cs</LastGenOutput>
+      <DependentUpon>WorkshopEntities.edmx</DependentUpon>
+      <LastGenOutput>WorkshopEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Mode_workshop.edmx">
+    <EntityDeploy Include="Models\WorkshopEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Mode_workshop.Designer.cs</LastGenOutput>
+      <LastGenOutput>WorkshopEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Mode_workshop.edmx.diagram">
-      <DependentUpon>Mode_workshop.edmx</DependentUpon>
+    <Content Include="Models\WorkshopEntities.edmx.diagram">
+      <DependentUpon>WorkshopEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

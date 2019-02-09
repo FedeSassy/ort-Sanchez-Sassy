@@ -24,7 +24,7 @@ namespace TP_NT_Taller_Meacanico.Controllers
             ViewBag.Message = "Your application description page.";
 
             // esto obtiene el objetito de conexion a la db, se abre una nueva conexion por request
-            var db = new Models
+            var db = new Models.ProyectoORTEntities3();
 
             // esto es para guardar cualquier cambio realizado 
             //db.SaveChanges();
