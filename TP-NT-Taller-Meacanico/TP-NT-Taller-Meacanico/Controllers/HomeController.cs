@@ -12,22 +12,28 @@ namespace TP_NT_Taller_Meacanico.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
             /**
              * El precio por hora invertida es de $300 para cualquier repuesto
              * El calculo final es [(cantidadHoras * precio) + (precioRep * cantRep)]
              */
-            ViewBag.Message = "Your application description page.";
-
             // esto obtiene el objetito de conexion a la db, se abre una nueva conexion por request
             var db = new Models.ProyectoORTEntities3();
 
+            var dbName = db.Mechanical_Workshop.First().name;
             // esto es para guardar cualquier cambio realizado 
             //db.SaveChanges();
+
+            var model = new Models.WorkshopName
+            {
+                name = dbName
+            };
+
+            return View(model);
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }

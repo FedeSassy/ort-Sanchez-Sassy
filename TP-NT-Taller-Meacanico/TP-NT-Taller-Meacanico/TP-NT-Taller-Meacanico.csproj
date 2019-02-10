@@ -200,6 +200,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WorkshopEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\WorkshopName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
