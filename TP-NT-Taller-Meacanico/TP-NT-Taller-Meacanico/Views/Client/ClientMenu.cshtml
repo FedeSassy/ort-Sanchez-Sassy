@@ -1,0 +1,40 @@
+﻿@model TP_NT_Taller_Meacanico.Models.WorkshopIndex
+@{
+    /**/
+
+    ViewBag.Title = "ClientMenu";
+}
+
+<h2>ClientMenu</h2>
+
+<div class="container">
+    <h2>Clients</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fullname</th>
+                <th>ID</th>
+                <th>Telephone</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var client in Model.clients)
+            {
+                var address = client.Addresses.First();
+                string addressFullName = (address.name + " " + address.number + " " + address.department);
+                <tr>
+                    <td>@client.name</td>
+                    <td>@client.personal_id</td>
+                    <td>@client.telephone</td>
+                    <td>@addressFullName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    @Html.ActionLink("Add new client", "AddClient", "Client")
+    @Html.ActionLink("Volver", "Index", "Home")
+</div>
