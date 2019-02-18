@@ -1,4 +1,4 @@
-﻿@model TP_NT_Taller_Meacanico.Models.WorkshopName
+﻿@model TP_NT_Taller_Meacanico.Models.WorkshopIndex
 
 @{
 
@@ -10,65 +10,34 @@
       <h1>Mechanical Workshop <strong>@Model.name</strong></h1> 
   </div>
 </div>
-
 <div class="container">
     <h2>Orders</h2>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>Fullname</th>
+                <th>ID</th>
+                <th>Telephone</th>
+                <th>Address</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
+            @foreach (var client in Model.clients)
+            {
+                var address = client.Addresses.First();
+                string addressFullName = (address.name + " " + address.number + " " + address.department);
+                <tr>
+                    <td>@client.name</td>
+                    <td>@client.personal_id</td>
+                    <td>@client.telephone</td>
+                    <td>@addressFullName</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>
-
-<!--<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="container">
+    <!--TODO revisar este caso porque segun el tutorial hay otra forma de hacer los links, esto no deberia funcionar
+        Sino podria usar la forma posta y copiar los estilos del bootstrap-->
+    @Html.ActionLink("Client menu", "ClientMenu", "Client")
 </div>
-<br />
-<br />
-<h1>@Model.name</h1>
-<br />
-<br />
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>-->

@@ -20,12 +20,14 @@ namespace TP_NT_Taller_Meacanico.Controllers
             var db = new Models.ProyectoORTEntities3();
 
             var dbName = db.Mechanical_Workshop.First().name;
+            var clients = db.Clients.ToList();
             // esto es para guardar cualquier cambio realizado 
             //db.SaveChanges();
 
-            var model = new Models.WorkshopName
+            var model = new Models.WorkshopIndex
             {
-                name = dbName
+                name = dbName,
+                clients = clients
             };
 
             return View(model);
