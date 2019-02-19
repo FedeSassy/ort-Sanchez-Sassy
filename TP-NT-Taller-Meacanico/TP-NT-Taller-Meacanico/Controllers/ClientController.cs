@@ -8,7 +8,7 @@ namespace TP_NT_Taller_Meacanico.Controllers
 {
     public class ClientController : Controller
     {
-        // GET: Client
+        private Models.ProyectoORTEntities3 db = new Models.ProyectoORTEntities3();
 
         public ActionResult ClientMenu()
         {
@@ -32,6 +32,16 @@ namespace TP_NT_Taller_Meacanico.Controllers
             ViewBag.Message = "This is the form to add a new client";
 
             return View();
+        }
+
+        [HttpPost]
+        public void AddClientForm(Models.Client client)
+        {
+            client.workshop_id = 1;
+            client.address_id = 4;
+
+            db.Clients.Add(client);
+            db.SaveChanges();
         }
     }
 }
