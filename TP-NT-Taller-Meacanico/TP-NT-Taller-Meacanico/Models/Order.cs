@@ -22,7 +22,6 @@ namespace TP_NT_Taller_Meacanico.Models
         public int id { get; set; }
         public System.DateTime date_created { get; set; }
         public Nullable<System.DateTime> date_ended { get; set; }
-        public Nullable<int> autopart_id { get; set; }
         public string state { get; set; }
         public int client_id { get; set; }
         public int employee_id { get; set; }

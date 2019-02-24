@@ -1,0 +1,44 @@
+﻿@model TP_NT_Taller_Meacanico.Models.AutopartsOrderInfo
+
+@{
+    ViewBag.Title = "AutoPartEdit";
+}
+
+<h2>Detailed list of autoparts for order #@Model.orderID</h2>
+<div class="container">
+    <h2>Orders</h2>
+    @if (Model.apo != null)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price per unit</th>
+                    <th>Hours</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ao in Model.apo)
+                {
+                    <tr>
+                        <td>@ao.name</td>
+                        <td>$@ao.price</td>
+                        <td>@ao.hours</td>
+                        <td>@ao.quantity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h3>No autoparts found</h3>
+    }
+</div>
+
+<button id="autopartEdit" type="button" class="btn btn-default btn-sm" style="margin-left: 15px;">
+    <a href="AutopartForm?orderID=@Model.orderID">
+        Add Autopart
+    </a>
+</button>

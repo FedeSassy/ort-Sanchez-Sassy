@@ -153,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AutopartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -161,6 +162,8 @@
     <Compile Include="Models\Autopart.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AutopartsOrderInfo.cs" />
+    <Compile Include="Models\AutoPartsOrderWrapper.cs" />
     <Compile Include="Models\Client.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
@@ -199,7 +202,7 @@
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Utils\Util.cs" />
-    <Compile Include="Models\WorkshopIndex.cs" />
+    <Compile Include="Models\WorkshopInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +210,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Styles\generalStyles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -261,7 +265,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Client\ClientMenu.cshtml" />
-    <Content Include="Views\Client\AddClient.cshtml" />
+    <Content Include="Views\Client\ClientForm.cshtml" />
+    <Content Include="Views\Autopart\AutoPartEdit.cshtml" />
+    <Content Include="Views\Autopart\AutopartForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

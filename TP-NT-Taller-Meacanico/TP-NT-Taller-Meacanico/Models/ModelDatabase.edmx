@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoORTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoORTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Autopart">
           <Key>
             <PropertyRef Name="id" />
@@ -12,7 +12,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="order_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -48,7 +47,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date_created" Type="date" Nullable="false" />
           <Property Name="date_ended" Type="date" />
-          <Property Name="autopart_id" Type="int" />
           <Property Name="state" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="client_id" Type="int" Nullable="false" />
           <Property Name="employee_id" Type="int" Nullable="false" />
@@ -200,8 +198,7 @@
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoORTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -212,7 +209,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="order_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order_Autopart" Relationship="Self.FK_Order_Autopart_Autopart" FromRole="Autopart" ToRole="Order_Autopart" />
         </EntityType>
         <EntityType Name="Client">
@@ -256,7 +252,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date_created" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="date_ended" Type="DateTime" Precision="0" />
-          <Property Name="autopart_id" Type="Int32" />
           <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="client_id" Type="Int32" Nullable="false" />
           <Property Name="employee_id" Type="Int32" Nullable="false" />
@@ -426,7 +421,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="order_id" ColumnName="order_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -466,7 +460,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date_created" ColumnName="date_created" />
                 <ScalarProperty Name="date_ended" ColumnName="date_ended" />
-                <ScalarProperty Name="autopart_id" ColumnName="autopart_id" />
                 <ScalarProperty Name="state" ColumnName="state" />
                 <ScalarProperty Name="client_id" ColumnName="client_id" />
                 <ScalarProperty Name="employee_id" ColumnName="employee_id" />

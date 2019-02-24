@@ -16,25 +16,12 @@ namespace TP_NT_Taller_Meacanico.Controllers
             // esto obtiene el objetito de conexion a la db, se abre una nueva conexion por request
             //var db = new Models.ProyectoORTEntities3();
 
-            /*var dbName = db.Mechanical_Workshop.First().name;
-            var clients = db.Clients.ToList();*/
-            // esto es para guardar cualquier cambio realizado 
-            //db.SaveChanges();
-
-           /* var model = new WorkshopIndex
-            {
-                name = dbName,
-                clients = clients
-            };*/
-
-            //string workshopName = dbObject.GetWorkShopName();
-
-            var model = new WorkshopIndex
+            var model = new WorkshopInfo
             {
                 name = dbObject.GetWorkShopName(),
-                clients = dbObject.GetAllClients()
+                orders = dbObject.GetAllOrders()
             };
-            
+
             return View(model);
         }
 

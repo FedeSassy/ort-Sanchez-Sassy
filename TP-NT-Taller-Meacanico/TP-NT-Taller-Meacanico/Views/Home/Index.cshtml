@@ -1,4 +1,4 @@
-﻿@model TP_NT_Taller_Meacanico.Models.WorkshopIndex
+﻿@model TP_NT_Taller_Meacanico.Models.WorkshopInfo
 
 @{
 
@@ -15,27 +15,52 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Fullname</th>
-                <th>ID</th>
-                <th>Telephone</th>
-                <th>Address</th>
+                <th>Oder ID</th>
+                <th>Creation Date</th>
+                <th>Finish Date</th>
+                <th>State</th>
+                <th>Cliend ID</th>
+                <th>Employee ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Plate Number</th>
+                <th>Description</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var client in Model.clients)
+            @foreach (var order in Model.orders)
             {
-                <tr>
-                    <td>@client.name</td>
-                    <td>@client.personal_id</td>
-                    <td>@client.telephone</td>
-                    <td>@client.address</td>
-                </tr>
+                string dateCreated = TP_NT_Taller_Meacanico.Models.Utils.Util.GetSimpleDate(order.date_created);
+                string dateEnded = TP_NT_Taller_Meacanico.Models.Utils.Util.GetSimpleDate(order.date_ended);
+            <tr>
+                <td>@order.id</td>
+                <td>@dateCreated</td>
+                <td>@dateEnded</td>
+                <td>@order.state</td>
+                <td>@order.client_id</td>
+                <td>@order.employee_id</td>
+                <td>@order.brand</td>
+                <td>@order.model</td>
+                <td>@order.plate_number</td>
+                <td>@order.description</td>
+                <td>@order.total</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <button id="autopartEdit" type="button" class="btn btn-default btn-sm">
+                        <a href="Autopart/AutopartEdit?orderID=@order.id">
+                            <span class="glyphicon glyphicon-pencil"></span> Autoparts Detail
+                        </a>
+                    </button>
+                </td>
+                <td>
+                    <button id="autopartEdit" type="button" class="btn btn-default btn-sm">
+                        Close Order
+                    </button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>
-</div>
-<div class="container">
-    <!--TODO revisar este caso porque segun el tutorial hay otra forma de hacer los links, esto no deberia funcionar
-        Sino podria usar la forma posta y copiar los estilos del bootstrap-->
-    @Html.ActionLink("Client menu", "ClientMenu", "Client")
 </div>

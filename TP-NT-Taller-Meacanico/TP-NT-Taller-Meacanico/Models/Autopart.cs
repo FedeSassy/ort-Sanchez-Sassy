@@ -22,7 +22,6 @@ namespace TP_NT_Taller_Meacanico.Models
         public int id { get; set; }
         public string name { get; set; }
         public decimal price { get; set; }
-        public int order_id { get; set; }
     
         public virtual ICollection<Order_Autopart> Order_Autopart { get; set; }
     }

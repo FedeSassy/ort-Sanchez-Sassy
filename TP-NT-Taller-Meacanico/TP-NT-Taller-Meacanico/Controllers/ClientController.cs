@@ -17,7 +17,7 @@ namespace TP_NT_Taller_Meacanico.Controllers
             // esto es para guardar cualquier cambio realizado 
             //db.SaveChanges();
 
-            var model = new WorkshopIndex
+            var model = new WorkshopInfo
             {
                 clients = dbWrapper.GetAllClients()
             };
@@ -25,7 +25,7 @@ namespace TP_NT_Taller_Meacanico.Controllers
             return View(model);
         }
 
-        public ActionResult AddClient()
+        public ActionResult ClientForm()
         {
             ViewBag.Message = "This is the form to add a new client";
 
@@ -33,9 +33,10 @@ namespace TP_NT_Taller_Meacanico.Controllers
         }
 
         [HttpPost]
-        public void AddClientForm(Client client)
+        public ActionResult AddClientForm(Client client)
         {
             dbWrapper.AddClient(client);
+            return RedirectToAction("ClientMenu");
         }
 
         [HttpGet]

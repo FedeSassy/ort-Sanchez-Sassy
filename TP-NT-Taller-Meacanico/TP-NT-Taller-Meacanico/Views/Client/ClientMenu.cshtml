@@ -1,4 +1,4 @@
-﻿@model TP_NT_Taller_Meacanico.Models.WorkshopIndex
+﻿@model TP_NT_Taller_Meacanico.Models.WorkshopInfo
 @{
     ViewBag.Title = "ClientMenu";
 }
@@ -43,6 +43,9 @@
 </div>
 
 <div class="container">
-    @Html.ActionLink("Add new client", "AddClient", "Client")
-    @Html.ActionLink("Home", "Index", "Home")
+    <button id="autopartEdit" type="button" class="btn btn-default btn-sm">
+        <a href="ClientForm">
+            Add new client
+        </a>
+    </button>
 </div>

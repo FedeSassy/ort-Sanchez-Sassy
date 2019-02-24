@@ -1,0 +1,45 @@
+﻿@model TP_NT_Taller_Meacanico.Models.AutopartsOrderInfo
+
+@{
+    ViewBag.Title = "AutopartForm";
+}
+
+<h2>AutopartForm</h2>
+
+@using (Html.BeginForm("AutopartAdd", "Autopart"))
+{
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="autopartID">Autoparts' list (select one):</label>
+                <select class="form-control" id="autopartID" name="autopartID">
+                    <option>Select autopart</option>
+                    @foreach (var autopart in Model.autoparts)
+                    {
+                        <option value="@autopart.id">@autopart.name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity:</label>
+                <input type="text" class="form-control" id="quantity" placeholder="Enter a quantity" name="quantity">
+            </div>
+            <div class="form-group">
+                <label for="hours">Hours spent:</label>
+                <input type="text" class="form-control" id="hours" placeholder="Enter hours' quantity" name="hours">
+            </div>
+            <div class="form-group" style="visibility: hidden">
+                <label for="orderID">Order ID:</label>
+                <input type="text" class="form-control" id="orderID" name="orderID" value="@Model.orderID">
+            </div>
+            <button type="submit" class="btn btn-default" style="margin-top: -130px;">Submit</button>
+        </form>
+    </div>
+}
+<br />
+
+<button id="autopartEdit" type="button" class="btn btn-default btn-sm" style="margin-top: -130px; margin-left: 15px;">
+    <a href="AutopartEdit?orderID=@Model.orderID">
+        Return
+    </a>
+</button>
