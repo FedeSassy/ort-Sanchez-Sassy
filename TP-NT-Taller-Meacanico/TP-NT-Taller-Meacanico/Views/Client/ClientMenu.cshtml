@@ -21,13 +21,11 @@
         <tbody>
             @foreach (var client in Model.clients)
             {
-                var address = client.Addresses.First();
-                string addressFullName = (address.name + " " + address.number + " " + address.department);
                 <tr personal_id="@client.personal_id">
                     <td>@client.name</td>
                     <td>@client.personal_id</td>
                     <td>@client.telephone</td>
-                    <td>@addressFullName</td>
+                    <td>@client.address</td>
                     <td>
                         <button id="clientEdit" type="button" class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-pencil"></span> Edit

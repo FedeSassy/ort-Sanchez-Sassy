@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\Models\WorkshopEntities.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\nico\Documents\nt-repo\ort-Sanchez-Sassy\TP-NT-Taller-Meacanico\TP-NT-Taller-Meacanico\Models\ModelDatabase.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

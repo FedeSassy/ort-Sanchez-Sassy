@@ -4,15 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bce4466aff1f4f43a0c756913241eca4" Name="Diagram1">
+      <Diagram DiagramId="754b2adae37449949662f44e7e7a7620" Name="Diagram1">
         <EntityTypeShape EntityType="ProyectoORTModel.Autopart" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoORTModel.Client" Width="1.5" PointX="2.875" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoORTModel.Employee" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoORTModel.Mechanical_Workshop" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoORTModel.Client" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoORTModel.Employee" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoORTModel.Mechanical_Workshop" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoORTModel.Order" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoORTModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoORTModel.Address" Width="1.5" PointX="7.625" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoORTModel.Order_Autopart" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoORTModel.Order_Autopart" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoORTModel.sysdiagram" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="ProyectoORTModel.FK_Order_Autopart_Autopart" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoORTModel.FK_Client_Mechanical_Workshop" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoORTModel.FK_Order_Client" ManuallyRouted="false" />
@@ -20,7 +19,6 @@
         <AssociationConnector Association="ProyectoORTModel.FK_Order_Employee" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoORTModel.FK_Order_Mechanical_Workshop" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoORTModel.FK_Order_Autopart_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="ProyectoORTModel.FK_Address_Client1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

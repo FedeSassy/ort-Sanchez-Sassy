@@ -24,13 +24,11 @@
         <tbody>
             @foreach (var client in Model.clients)
             {
-                var address = client.Addresses.First();
-                string addressFullName = (address.name + " " + address.number + " " + address.department);
                 <tr>
                     <td>@client.name</td>
                     <td>@client.personal_id</td>
                     <td>@client.telephone</td>
-                    <td>@addressFullName</td>
+                    <td>@client.address</td>
                 </tr>
             }
         </tbody>
