@@ -1,15 +1,25 @@
-﻿var c_remove = $("#clientRemove");
+﻿var c_removeList = $("*[id=clientRemove]");
 
-c_remove.click(function () {
-    removeClientByPersonalID(c_remove.parent().parent()[0].cells[1].textContent);
+c_removeList.each(function () {
+    this.addEventListener("click", function () {
+        removeClientByPersonalID(this.parentElement.parentElement.cells[1].textContent);
+    });
 });
+
+/*.click(function () {
+removeClientByPersonalID(c_remove.parent().parent()[0].cells[1].textContent);
+});*/
 
 function removeClientByPersonalID(clientID) {
     var info = {
-        id: clientID
+        clientPersonalID: clientID
     }
 
-    console.log("info => ", info);
-    //static makeAjaxRequest(type, action, controller, data) {
-    AjaxClient.makeAjaxRequest("DELETE", "RemoveClient", "Client", info);
+    AjaxClient.makeAjaxRequest("GET", "ClientRemove", "Client", info);
 };
+
+class ClientService {
+    static removeClient(client_id) {
+        $('tr[personal_id=' + client_id + ']')[0].remove();
+    }
+}

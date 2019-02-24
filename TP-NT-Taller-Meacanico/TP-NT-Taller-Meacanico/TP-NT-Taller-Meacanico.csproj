@@ -170,6 +170,7 @@
     <Compile Include="Models\CustomExceptionClasses\ClientNotFoundException.cs" />
     <Compile Include="Models\CustomExceptionClasses\CustomException.cs" />
     <Compile Include="Models\CustomExceptionClasses\OrdenTrabajoNotFoundException.cs" />
+    <Compile Include="Models\DBWrapper.cs" />
     <Compile Include="Models\Employee.cs">
       <DependentUpon>WorkshopEntities.tt</DependentUpon>
     </Compile>

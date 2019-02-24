@@ -1,7 +1,5 @@
 ﻿@model TP_NT_Taller_Meacanico.Models.WorkshopIndex
 @{
-    /**/
-
     ViewBag.Title = "ClientMenu";
 }
 
@@ -25,7 +23,7 @@
             {
                 var address = client.Addresses.First();
                 string addressFullName = (address.name + " " + address.number + " " + address.department);
-                <tr>
+                <tr personal_id="@client.personal_id">
                     <td>@client.name</td>
                     <td>@client.personal_id</td>
                     <td>@client.telephone</td>

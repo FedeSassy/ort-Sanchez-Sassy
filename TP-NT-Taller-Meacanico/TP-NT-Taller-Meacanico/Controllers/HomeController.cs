@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using TP_NT_Taller_Meacanico;
+﻿using System.Web.Mvc;
+using TP_NT_Taller_Meacanico.Models;
 
 namespace TP_NT_Taller_Meacanico.Controllers
 {
     public class HomeController : Controller
     {
-
-        private Models.ProyectoORTEntities3 db = new Models.ProyectoORTEntities3();
+        private DBWrapper dbObject = new DBWrapper();
 
         public ActionResult Index()
         {
@@ -21,17 +16,25 @@ namespace TP_NT_Taller_Meacanico.Controllers
             // esto obtiene el objetito de conexion a la db, se abre una nueva conexion por request
             //var db = new Models.ProyectoORTEntities3();
 
-            var dbName = db.Mechanical_Workshop.First().name;
-            var clients = db.Clients.ToList();
+            /*var dbName = db.Mechanical_Workshop.First().name;
+            var clients = db.Clients.ToList();*/
             // esto es para guardar cualquier cambio realizado 
             //db.SaveChanges();
 
-            var model = new Models.WorkshopIndex
+           /* var model = new WorkshopIndex
             {
                 name = dbName,
                 clients = clients
-            };
+            };*/
 
+            //string workshopName = dbObject.GetWorkShopName();
+
+            var model = new WorkshopIndex
+            {
+                name = dbObject.GetWorkShopName(),
+                clients = dbObject.GetAllClients()
+            };
+            
             return View(model);
         }
 
