@@ -16,6 +16,8 @@
                 <th>ID</th>
                 <th>Telephone</th>
                 <th>Address</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +30,16 @@
                     <td>@client.personal_id</td>
                     <td>@client.telephone</td>
                     <td>@addressFullName</td>
+                    <td>
+                        <button id="clientEdit" type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                    </td>
+                    <td>
+                        <button id="clientRemove" type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                    </td>
                 </tr>
             }
         </tbody>

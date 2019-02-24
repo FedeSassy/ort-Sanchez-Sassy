@@ -43,5 +43,24 @@ namespace TP_NT_Taller_Meacanico.Controllers
             db.Clients.Add(client);
             db.SaveChanges();
         }
+
+        [HttpDelete]
+        public JsonResult RemoveClient(int id)
+        {
+
+
+            return Json(new { Message = ("ok! id="+id), JsonRequestBehavior.AllowGet });
+            //db.Clients.Remove(client);
+            Models.Client client = db.Clients.Find(id);
+            int status = db.SaveChanges();
+
+            if (status == 1)
+            {
+                return Json(new { Message = "success!", JsonRequestBehavior.AllowGet });
+            } else
+            {
+                return Json(new { Message = "failure!", JsonRequestBehavior.DenyGet });
+            }
+        }
     }
 }
