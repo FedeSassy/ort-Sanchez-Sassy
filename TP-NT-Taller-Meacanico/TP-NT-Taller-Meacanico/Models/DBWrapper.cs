@@ -116,5 +116,11 @@ namespace TP_NT_Taller_Meacanico.Models
             dbObject.Order_Autopart.Add(oa);
             dbObject.SaveChanges();
         }
+
+        public void AddOrder(Order order)
+        {
+            dbObject.Orders.Add(order);
+            dbObject.SaveChanges();
+        }
     }
 }
