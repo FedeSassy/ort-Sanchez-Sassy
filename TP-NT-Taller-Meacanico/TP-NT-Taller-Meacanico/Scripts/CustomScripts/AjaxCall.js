@@ -9,7 +9,12 @@
             data: data,
             dataType: "json",
             success: function (response) {
-                ClientService.removeClient(response.p_id);      
+                if (response.p_id) {
+                    ClientService.removeClient(response.p_id);
+                } else if (response.order_id) {
+                    OrdertService.closeOrderAndSetTotal(response.order_id, response.total_price, response.date_ended)
+                }
+                      
             },
             error: function (response) { alert(response.message); }
         });

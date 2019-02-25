@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 using TP_NT_Taller_Meacanico.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TP_NT_Taller_Meacanico.Controllers
 {
@@ -23,6 +25,48 @@ namespace TP_NT_Taller_Meacanico.Controllers
             };
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult OrderClose(int orderID)
+        {
+            List<AutoPartsOrderWrapper> oa = dbObject.GetAllAutopartsByOrderID(orderID);
+            decimal totalPrice = 0;
+
+            if (oa != null && oa.Count() > 0)
+            {
+                foreach (AutoPartsOrderWrapper apow in oa)
+                {
+                    totalPrice += CalculatePricePerAutopart(apow.hours, apow.price, apow.quantity);
+                }
+
+                int statusResponse = dbObject.CloseOrderByID(orderID, totalPrice);
+                string dateEnded = Models.Utils.Util.GetSimpleDate(Models.Utils.Util.GetCurrentTime());
+
+                if (statusResponse != 0)
+                {
+                    var response = new
+                    {
+                        order_id = orderID,
+                        total_price = totalPrice,
+                        date_ended = dateEnded
+                    };
+
+                    return Json(response, JsonRequestBehavior.AllowGet);
+                }
+            }
+
+            var errorResponse = new
+            {
+                message = "An error ocurred while trying to close the order from the database, please try again later"
+            };
+
+            return Json(errorResponse, JsonRequestBehavior.DenyGet);
+        }
+
+        private decimal CalculatePricePerAutopart(int hours, decimal price, int quantity)
+        {
+            return ((hours * price) + (price * quantity));
         }
 
         public ActionResult About()

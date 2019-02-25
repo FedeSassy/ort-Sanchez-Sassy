@@ -7,10 +7,26 @@ namespace TP_NT_Taller_Meacanico.Models
     public class DBWrapper
     {
         private ProyectoORTEntities5 dbObject;
+        private const int ERROR_SAVING = 0;
 
         public DBWrapper()
         {
             dbObject = new ProyectoORTEntities5();
+        }
+
+        public int CloseOrderByID(int orderID, decimal total)
+        {
+            Order orderToClose = GetOrderByID(orderID);
+            if (orderToClose != null)
+            {
+                orderToClose.total = total;
+                orderToClose.state = "DONE";
+                orderToClose.date_ended = Utils.Util.GetCurrentTime();
+
+                return dbObject.SaveChanges();
+            }
+
+            return ERROR_SAVING;
         }
 
         public string GetWorkShopName()

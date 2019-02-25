@@ -2,15 +2,11 @@
 
 c_removeList.each(function () {
     this.addEventListener("click", function () {
-        removeClientByPersonalID(this.parentElement.parentElement.cells[1].textContent);
+        closeOrder(this.parentElement.parentElement.cells[1].textContent);
     });
 });
 
-/*.click(function () {
-removeClientByPersonalID(c_remove.parent().parent()[0].cells[1].textContent);
-});*/
-
-function removeClientByPersonalID(clientID) {
+function closeOrder(clientID) {
     var info = {
         clientPersonalID: clientID
     }
