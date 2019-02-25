@@ -122,5 +122,10 @@ namespace TP_NT_Taller_Meacanico.Models
             dbObject.Orders.Add(order);
             dbObject.SaveChanges();
         }
+
+        public List<Employee> GetAllEmployees()
+        {
+            return dbObject.Employees.ToList();
+        }
     }
 }

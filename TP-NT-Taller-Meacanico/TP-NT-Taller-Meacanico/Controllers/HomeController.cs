@@ -64,6 +64,12 @@ namespace TP_NT_Taller_Meacanico.Controllers
             return Json(errorResponse, JsonRequestBehavior.DenyGet);
         }
 
+        [HttpGet]
+        public void GenerateCSVFile()
+        {
+            Models.Utils.FilesHelper.GenerateCSVFile();
+        }
+
         private decimal CalculatePricePerAutopart(int hours, decimal price, int quantity)
         {
             return ((hours * price) + (price * quantity));

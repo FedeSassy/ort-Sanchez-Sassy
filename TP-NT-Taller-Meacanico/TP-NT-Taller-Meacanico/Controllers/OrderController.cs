@@ -27,7 +27,7 @@ namespace TP_NT_Taller_Meacanico.Controllers
                 newOrder.date_created = Models.Utils.Util.GetCurrentTime();
                 newOrder.state = "PEND";
                 newOrder.client_id = client.id;
-                newOrder.employee_id = 2; //hacer un getRandomEmployee()
+                newOrder.employee_id = Models.Utils.Util.GetRandomEmployee();
                 newOrder.brand = brand;
                 newOrder.model = model;
                 newOrder.plate_number = plateNumber;
@@ -35,6 +35,7 @@ namespace TP_NT_Taller_Meacanico.Controllers
                 newOrder.workshop_id = 1;
 
                 dbWrapper.AddOrder(newOrder);
+                //TODO: crear CSV con historial de ordenes, y tal vez mandar datos de orden final por mail (ahre)
             }
 
             return RedirectToAction("Index", "Home");

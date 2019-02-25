@@ -202,6 +202,7 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>ModelDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Utils\FilesHelper.cs" />
     <Compile Include="Models\Utils\Util.cs" />
     <Compile Include="Models\WorkshopInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -274,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
